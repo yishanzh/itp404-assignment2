@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css">
+
+    <title>Assignment 1</title>
+  </head>
+  <body>
+    <div id="container">
+    <h2>A1: Reddit Search</h2>
+
+    <form>
+      <div class="form-group">
+      <label for="keywords"></label>
+      <input style="width: 30%; border-radius: 2px; margin: 2%;" type="text" id="keywords" placeholder="Enter something here..">
+
+    </div>
+      <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+    <div id="box">
+    <div id="results">
+      <div class="loader">Loading...</div>
+      <template id="search-results-template">
+        {{#each item}}
+        <div class="search-results">
+          <h5><a href="{{data.children.data.url}}">{{data.children.data.title}}</a></h5>
+          <p>score: {{data.children.data.score}}</p>
+          <p>author: {{data.children.data.author}}</p>
+
+        </div>
+        {{/each}}
+      </template>
+
+
+    </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="moment.js"></script>
+    <script src="handlebars-v4.0.11.js"></script>
+
+    <script src="main.js"></script>
+
+
+  </body>
+</html>
