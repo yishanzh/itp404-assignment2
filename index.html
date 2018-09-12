@@ -9,11 +9,11 @@
 
     <link rel="stylesheet" href="main.css">
 
-    <title>Assignment 1</title>
+    <title>Assignment 2</title>
   </head>
   <body>
     <div id="container">
-    <h2>A1: Reddit Search</h2>
+    <h2>A2: Updated Reddit Search using Template</h2>
 
     <form>
       <div class="form-group">
@@ -29,12 +29,16 @@
     <div id="results">
       <div class="loader">Loading...</div>
       <template id="search-results-template">
-        {{#each item}}
+        {{#each searchResults}}
         <div class="search-results">
-          <h5><a href="{{data.children.data.url}}">{{data.children.data.title}}</a></h5>
-          <p>score: {{data.children.data.score}}</p>
-          <p>author: {{data.children.data.author}}</p>
-
+          <h5><a href="{{this.data.url}}">{{this.data.title}}</a></h5>
+          <p>score: {{this.data.score}}</p>
+          <p>subscribers: {{formatNumber this.data.subreddit_subscribers}}</p>
+          {{#if this.data.num_comments}}
+          <p>comments: {{formatNumber this.data.num_comments}}</p>
+          {{else}}
+          <p>No comment.</p>
+          {{/if}}
         </div>
         {{/each}}
       </template>

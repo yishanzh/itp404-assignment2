@@ -1,4 +1,8 @@
 let searchResultTemplateString = document.getElementById('search-results-template').innerHTML;
+
+Handlebars.registerHelper('formatNumber', function(number) {
+  return number.toLocaleString();
+});
 let renderResults = Handlebars.compile(searchResultTemplateString);
 
 
@@ -14,7 +18,7 @@ $('form').on('submit', function(event){
 
   let url = `https://www.reddit.com/r/${search}.json`;
 
-  let promise = $.ajax ({
+  let promise = $.ajax({
     type: 'GET',
     url: url
   });
@@ -24,7 +28,7 @@ $('form').on('submit', function(event){
     console.log(response);
 
     let renderedResults = renderResults({
-      item: response
+      searchResults: response.data.children
     }); //i don't know what to put inside the renderResults!!
 
     let html = '';
